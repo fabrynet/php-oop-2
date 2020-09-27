@@ -14,10 +14,10 @@
 
 class Square {
 
-  protected $lato;
+  private $lato;
 
   public function getLato() {
-    $this -> lato;
+    return $this -> lato;
   }
 
   public function setLato($lato) {
@@ -32,11 +32,11 @@ class Square {
     $this -> setLato($lato);
   }
 
-  protected function getPer() {
+  public function getPer() { // scopo delle classi
     return 4 * $this -> lato;
   }
 
-  protected function getArea() {
+  public function getArea() {
     return pow($this -> lato, 2);
   }
 
@@ -57,17 +57,17 @@ class Square {
 
 class Cube extends Square {
 
-  protected function getSup() {
-    return parent::getArea() * 6;
+  public function getSup() {
+    return $this -> getArea() * 6;
   }
 
-  protected function getVol() {
-    return parent::getArea() * $this -> lato;
+  public function getVol() {
+    return $this -> getArea() * $this -> getLato();
   }
 
   protected function getStrCube() {
     return
-      parent::getStrSquare()
+      $this -> getStrSquare()
       ."Superficie: ". $this -> getSup()."<br>"
       ."Volume: ". $this -> getVol()."<br>";
   }
